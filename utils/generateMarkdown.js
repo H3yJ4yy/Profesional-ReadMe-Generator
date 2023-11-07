@@ -53,48 +53,45 @@ if (license === "MIT License"){
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
-  if (license !== none){
-    return `${renderLicenseBadge(license)}${renderLicenseLink(license)}`
-  }else {
+  if (license === "none"){
     return "";
+  }else {
+    return `${renderLicenseBadge(license)}${renderLicenseLink(license)}`
   }
 }
 
 // TODO: Create a function to generate markdown for README
 const generateMarkdown = ({title, description, usage, installation, license, credits, tests, email, ghUserName}) => {
   return `
-  ## ${title}
+  ## ${title} ${renderLicenseSection(license)}
 
-  ## Description
+  ### Description
  ${description}
-  ## Table of Contents (Optional)
+  ### Table of Contents (Optional)
 
   - [Installation](#installation)
   - [Usage](#usage)
   - [Credits](#credits)
   - [License](#license)
-  - [Badges](#Badges)
   - [Tests](#Tests)
-  - [Contact Info](#Contact Info)
+  - [Contact](#Contact)
 
-  ## Installation
+  ### Installation
   ${installation}
 
-  ## Usage
+  ### Usage
  ${usage}
 
-  ## Credits
+  ### Credits
  ${credits}
   
-  ## License
-  ${renderLicenseSection(license)}
-  ## Badges
-  ${renderLicenseBadge(license)}
+  ### License
+  ${license} 
  
-  ## Tests
+  ### Tests
   ${tests}
 
-  ## Contact Info
+  ### Contact 
   For any further questions, feel free to contact me through my GitHub [${ghUserName}](https://github.com/${ghUserName}) or Email [${email}](mailto:${email}).
 `;
 }
